@@ -19,7 +19,7 @@ app = FastAPI()
 # Configuración para permitir CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://artify-4454d.web.app"],  
+    allow_origins=["https://yamikzex.github.io"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
