@@ -8,6 +8,9 @@ import os
 import logging
 from io import BytesIO
 from fastapi.responses import StreamingResponse
+from starlette.responses import Response
+
+
 
 API_KEY = 'dA8dubQCxH3jKZFG5AY6pS6y'
 
@@ -16,7 +19,7 @@ app = FastAPI()
 # Configuración para permitir CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Reemplaza con tu dominio de frontend
+    allow_origins=["https://artify-4454d.web.app"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -163,6 +166,8 @@ async def download_file(file_path: str):
     normalized_file_path = file_path.replace("/", os.path.sep)
     if not os.path.isfile(normalized_file_path):
         raise HTTPException(status_code=404, detail="File not found")
+
+    # Leer el archivo y devolverlo como una respuesta de archivo
     return FileResponse(normalized_file_path, media_type='application/octet-stream', filename=os.path.basename(normalized_file_path))
 
 @app.post("/compress-image/")
@@ -203,6 +208,6 @@ async def compress_image(file: UploadFile = File(...), quality: int = Form(20)):
         return JSONResponse(status_code=500, content={"error": str(e)})
 
 
-if __name__ == "__main__":
+if '_name_' == "_main_":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

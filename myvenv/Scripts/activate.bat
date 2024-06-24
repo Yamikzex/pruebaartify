@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\Users\kwica\Downloads\trabajos de la u\Upb\Proyecto\Backend\myvenv
+set VIRTUAL_ENV=D:\Artify\Backend artify clon\Artify-backend\myvenv
 
 if not defined PROMPT set PROMPT=$P$G
 
